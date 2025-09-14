@@ -37,17 +37,19 @@ public class UserMapper {
         );
     }
     
-    private static UserEntity toEntity(UserPostDTO dto) {
+    public static UserEntity toEntity(UserPostDTO dto) {
     	return new UserEntity(
     			dto.getName(),
     			dto.getEmail(),
     			dto.getPassword());
     }
     
-    private static void dtoUpdateEntity(UserPutDTO dto, UserEntity entity) {
+    public static UserGetDTO dtoUpdateEntity(UserPutDTO dto, UserEntity entity) {
     	entity.setNome(dto.getName());
     	entity.setEmail(dto.getEmail());
     	entity.setPassword(dto.getPassword());
+    	UserGetDTO userUpdated = UserMapper.dtoGetEntity(entity);
+    	return userUpdated;
     }
     
 }
